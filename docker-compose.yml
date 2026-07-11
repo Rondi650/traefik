@@ -18,6 +18,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./certs:/certs:ro
       - ./dynamic:/dynamic:ro
+      - ./config/config.yaml:/config/config.yaml
 
     command:
       # EntryPoints
@@ -35,6 +36,7 @@ services:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--providers.docker.network=proxy"
+      - "--providers.file.filename=/config/config.yaml"
 
       # API & Dashboard 
       - "--api.dashboard=true"
@@ -55,6 +57,8 @@ services:
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.routers.dashboard.service=api@internal"
       - "traefik.http.routers.dashboard.tls=true"
+      # cabecalhos so funcionam bem online em https
+      # - "traefik.http.routers.dashboard.middlewares=default-security-headers@file"
 
       # Basic‑auth middleware
       # - "traefik.http.middlewares.dashboard-auth.basicauth.users=<PASTE_HASH_HERE>"

@@ -1,0 +1,15 @@
+http:
+  middlewares:
+    default-security-headers:
+      headers:
+        customBrowserXSSValue: "0"
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        frameDeny: true
+        referrerPolicy: "strict-origin-when-cross-origin"
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 31536000
+        contentSecurityPolicy: "default-src 'self'"
+        customRequestHeaders:
+          X-Forwarded-Proto: https
