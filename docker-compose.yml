@@ -57,7 +57,7 @@ services:
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.routers.dashboard.service=api@internal"
       - "traefik.http.routers.dashboard.tls=true"
-      # cabecalhos so funcionam bem online em https
+      # cabecalhos so funcionam bem online em https e em sites proprios
       # - "traefik.http.routers.dashboard.middlewares=default-security-headers@file"
 
       # Basic‑auth middleware
